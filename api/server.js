@@ -8,16 +8,9 @@ const middlewares = jsonServer.defaults()
 
 server.use(middlewares)
 
-// server.get("/user", (req, res, next) => {
-//   if (
-//     !req.headers.cookie ||
-//     req.headers.cookie.indexOf("logged_in=yes") === -1
-//   ) {
-//     res.sendStatus(401)
-//   } else {
-//     next()
-//   }
-// })
+server.get("/status", (req, res) => {
+  res.status(200).json(router.db.get("status").value())
+})
 
 server.use(bodyParser.text())
 server.post("/subscribe", (req, res, next) => {

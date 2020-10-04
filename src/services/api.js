@@ -1,4 +1,4 @@
-import get from "lodash/get"
+import get from "lodash.get"
 const apiUrl = process.env.GATSBY_API_URL
 
 async function getUser() {

@@ -15,7 +15,7 @@ import ByTheCodeImage from "../images/2020/together-by-the-code.png"
 import BGImage from "../images/2020/background.png"
 import GirlImage from "../images/2020/girl.png"
 
-import get from "lodash/get"
+import get from "lodash.get"
 import { getProjects } from "./../services/api"
 
 const blink = keyframes`

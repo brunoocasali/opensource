@@ -101,7 +101,8 @@ function Coder({ githubUser, avatar, approved, totalContributions }) {
         <CoderDetails>
           <CoderText>
             <CoderName>@{githubUser}</CoderName>
-            {totalContributions} contribuições
+            {totalContributions}{" "}
+            {totalContributions === 1 ? `contribuição` : `contribuições`}
             {approved && (
               <CoderApproved>
                 <MergedIcon width="8" height="8" /> desafio completo

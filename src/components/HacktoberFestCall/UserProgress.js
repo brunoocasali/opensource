@@ -129,6 +129,16 @@ function UserProgress({ user }) {
     user.githubUser
   )
 
+  function pluralization(total, singular, plural, none) {
+    if (total === 0) {
+      return none
+    } else if (total === 1) {
+      return `${total} ${singular}`
+    } else {
+      return `${total} ${plural}`
+    }
+  }
+
   const completed =
     isStaff ||
     (achievements.opened && achievements.merged && achievements.firsts)
@@ -176,11 +186,31 @@ function UserProgress({ user }) {
           </ProgressBody>
           <ProgressStatus>
             {!completed ? (
-              <ProgressStatusText>
-                Você tem{" "}
-                <strong>{progress.opened} pull request(s) enviado(s)</strong> e{" "}
-                <strong>{progress.merged} aceito(s)</strong>
-              </ProgressStatusText>
+              achievements.opened ? (
+                <ProgressStatusText>
+                  Você tem{" "}
+                  <strong>
+                    {pluralization(
+                      progress.opened,
+                      "pull request enviado",
+                      "pull requests enviados"
+                    )}
+                  </strong>{" "}
+                  e{" "}
+                  <strong>
+                    {pluralization(
+                      progress.merged,
+                      "aceito",
+                      "aceitos",
+                      "nenhum aceito"
+                    )}
+                  </strong>
+                </ProgressStatusText>
+              ) : (
+                <ProgressStatusText>
+                  Você ainda não enviou nenhum pull request!
+                </ProgressStatusText>
+              )
             ) : (
               <ProgressStatusText>
                 <strong>Parabéns!</strong> Você concluiu o desafio da

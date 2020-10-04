@@ -8,10 +8,6 @@ const middlewares = jsonServer.defaults()
 
 server.use(middlewares)
 
-server.get("/status", (req, res) => {
-  res.status(200).json(router.db.get("status").value())
-})
-
 server.use(bodyParser.text())
 server.post("/subscribe", (req, res, next) => {
   const data = JSON.parse(req.body)
